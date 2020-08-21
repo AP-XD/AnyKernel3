@@ -1,31 +1,48 @@
 # AnyKernel3 Ramdisk Mod Script
 # osm0sis @ xda-developers
 
+## AnyKernel setup
+# begin properties
 properties() { '
-kernel.string=Kernel from Stormbreaker-projects
+kernel.string=StormBreaker Kernel by CryllicBuster273
 do.devicecheck=1
 do.modules=0
-do.systemless=1
 do.cleanup=1
-do.cleanuponabort=1
-device.name1=
-device.name2=
+do.cleanuponabort=0
+device.name1=billie
+device.name2=N10
+device.name3=OnePlusN10
+device.name4=n10
+device.name5=oneplusn10
 supported.versions=
-supported.patchlevels=
-'; }
+'; } # end properties
 
 # shell variables
 block=/dev/block/bootdevice/by-name/boot;
-is_slot_device=0;
+is_slot_device=auto;
 ramdisk_compression=auto;
 
+
 ## AnyKernel methods (DO NOT CHANGE)
-# import patching functions/variables - see for reference 
+# import patching functions/variables - see for reference
 . tools/ak3-core.sh;
+
+
+## AnyKernel file attributes
+# set permissions/ownership for included ramdisk files
+set_perm_recursive 0 0 750 750 $ramdisk/*;
+
 
 ## AnyKernel install
 dump_boot;
 
+# Begin Ramdisk Changes
+
+# migrate from /overlay to /overlay.d to enable SAR Magisk
+if [ -d $ramdisk/overlay ]; then
+  rm -rf $ramdisk/overlay;
+fi;
 
 write_boot;
 ## end install
+
