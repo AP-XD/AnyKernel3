@@ -2,7 +2,7 @@ NAME ?= Stormbreaker
 
 DATE := $(shell date "+%Y%m%d-%H%M")
 
-CODE := 2.0
+CODE := beta
 
 KERNELVERSION := $(shell cat ../Makefile | grep VERSION | head -n 1 | sed "s|.*=||1" | sed "s| ||g")
 
