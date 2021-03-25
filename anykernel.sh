@@ -11,8 +11,8 @@ do.modules=0
 do.systemless=1
 do.cleanup=1
 do.cleanuponabort=1
-device.name1=X01A
-device.name2=X01AD
+device.name1=ginkgo
+device.name2=willow
 supported.versions=
 supported.patchlevels=
 '; } # end properties
@@ -40,4 +40,3 @@ dump_boot;
 
 write_boot;
 ## end install
-
