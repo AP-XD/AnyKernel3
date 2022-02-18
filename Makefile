@@ -1,14 +1,14 @@
-NAME ?= Stormbreaker
+NAME ?= StormBreaker
 
 DATE := $(shell date "+%Y%m%d-%H%M")
 
-CODE := 2.0
+DEVICE :=
 
-KERNELVERSION := $(shell cat ../Makefile | grep VERSION | head -n 1 | sed "s|.*=||1" | sed "s| ||g")
+KERNELVERSION := $(shell cd .. && make kernelversion | cut -c 1-3)
 
-KERNELPATCHLEVEL := $(shell cat ../Makefile | grep PATCHLEVEL | head -n 1 | sed "s|.*=||1" | sed "s| ||g")
+VERSION :=
 
-ZIP := $(NAME)-$(KERNELVERSION).$(KERNELPATCHLEVEL)-$(CODE)-$(DATE).zip
+ZIP := $(NAME)-$(KERNELVERSION)-$(DEVICE)-$(DATE)-$(VERSION).zip
 
 EXCLUDE := Makefile *.git* *.jar* *placeholder* *.md*
 
@@ -24,8 +24,8 @@ $(ZIP):
 
 
 clean:
+	@rm -vf dtbo.img
 	@rm -vf *.zip*
 	@rm -vf zImage
 	@rm -vf Image*
 	@echo "Cleaned Up."
-
