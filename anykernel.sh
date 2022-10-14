@@ -4,8 +4,8 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=StormBreaker Kernel
-maintainer.string1= AP-XD, Saalim Quadri, Team StormBreaker
+kernel.string=Cosmic Kernel
+maintainer.string1= Shashi, AP-XD
 do.devicecheck=1
 do.modules=0
 do.systemless=1
